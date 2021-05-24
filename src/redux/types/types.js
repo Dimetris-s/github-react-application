@@ -1,0 +1,4 @@
+export const SET_REPOS = 'SET_REPOS'
+export const SET_LOADING = 'SET_LOADING'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE'

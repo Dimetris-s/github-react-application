@@ -1,0 +1,24 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min-content;
+    
+    .page {
+        padding: 0.2rem 0.8rem;
+        border-radius: 8px;
+        cursor: pointer;
+        &:hover:not(.page--current) {
+            background-color: rgba(98, 255, 145, 0.548);
+        }
+        &--current {
+            background-color: rgb(42, 255, 106);
+        }
+    }
+}
