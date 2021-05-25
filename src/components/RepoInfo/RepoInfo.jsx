@@ -29,31 +29,43 @@ const RepoInfo = props => {
              ? <Loader/>
              :
              <>
-                <h1 className="repoinfo__titile">{currentRepo.name}</h1>
-                <div className="repoinfo__image">
-                    <img src={currentRepo.owner.avatar_url} alt="avatar" />
+                <div className="repoinfo__header">
+                    <div className="repoinfo__header-left">
+                        <h1 className="repoinfo__title">{currentRepo.name}</h1>
+                        <div className="repoinfo__image">
+                            <img src={currentRepo.owner?.avatar_url} alt="avatar" />
+                        </div>
+                        <div className="repoinfo__owner">Автор: {currentRepo.owner.login}</div>
+                        <div className="repoinfo__desc">
+                            <span>Описание:</span>
+                            <p>{currentRepo.description}</p>
+                        </div>
+                    </div>
+                <button className="btn btn-primary btn-lg repoinfo__btn" onClick={clickHandler}>Back</button>
+                    
                 </div>
-                <div className="repoinfo__desc">{currentRepo.description}</div>
-                <div className="repoinfo__watchers">Watchers: {currentRepo.watchers_count}</div>
-                <div className="repoinfo__stars">Stars: {currentRepo.stargazers_count}</div>
-                <div className="repoinfo__branch">Branch: {currentRepo.default_branch}</div>
-                <a href={currentRepo.html_url} className="repoinfo__link">Репозиторий</a>
-                <ul className="repoinfo__contributors-list">
+                <div className="repoinfo__watchers">Watchers: {currentRepo.watchers_count}<i className="far fa-eye"></i></div>
+                <div className="repoinfo__stars">Stars: {currentRepo.stargazers_count} <i className="fas fa-star"></i></div>
+                <div className="repoinfo__branch">Branch: <span>{currentRepo.default_branch}</span>  </div>
+                <a href={currentRepo.html_url} className="repoinfo__link">Ссылка на репозиторий</a>
+                <hr/>
+                <h3>Список контрибьютеров:</h3>
+                <ul className="list-group">
                     {
                         contributors.map((contr, index) => (
                             <li 
-                             className="repoinfo__contributors-list-item"
+                             className="list-group-item"
                              key={index}
                             >
-                            <a href={contr.html_url}>
-                                {contr.login}
-                            </a>
+                                <a href={contr.html_url}>
+                                <div className="repoinfo__image"><img src={contr.avatar_url} alt="user" /></div>
+                                    {contr.login}
+                                </a>
                             </li>
                         ))
                     }
                 </ul>
                 
-                <button className="btn btn-primary" onClick={clickHandler}>Back</button>
              </>
 
                 
